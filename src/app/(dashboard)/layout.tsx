@@ -1,33 +1,61 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/common/app-sidebar";
-import { AppHeader } from "@/components/common/app-header";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { redirect } from "next/navigation";
+'use client';
 
-export default async function DashboardLayout({
-    children,
+import { AuthProvider, useAuth } from '@/context/AuthContext';
+import { Sidebar } from '@/components/layout/sidebar';
+import { Header } from '@/components/layout/header';
+import { CommandPalette } from '@/components/command-palette';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+function DashboardContent({
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-        redirect("/login");
-    }
+  const router = useRouter();
+  const { currentUser, loading } = useAuth();
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && !loading && !currentUser) {
+      router.push('/signup');
+    }
+  }, [mounted, loading, currentUser, router]);
+
+  if (!mounted || loading || !currentUser) {
     return (
-        <SidebarProvider>
-            <div className="flex min-h-screen w-full">
-                <AppSidebar />
-                <div className="flex h-screen w-full flex-col">
-                    <AppHeader />
-                    <main className="flex-1 overflow-auto bg-muted/10 p-4 md:p-6 lg:p-8">
-                        <div className="mx-auto max-w-7xl">
-                            {children}
-                        </div>
-                    </main>
-                </div>
-            </div>
-        </SidebarProvider>
+      <div className="flex h-screen items-center justify-center bg-background">
+        <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-emerald-600"></div>
+      </div>
     );
+  }
+
+  return (
+    <div className="flex h-screen overflow-hidden">
+      <Sidebar />
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <Header />
+        <main className="flex-1 overflow-y-auto bg-background p-6">
+          {children}
+        </main>
+      </div>
+      <CommandPalette />
+    </div>
+  );
+}
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <AuthProvider>
+      <DashboardContent>{children}</DashboardContent>
+    </AuthProvider>
+  );
 }

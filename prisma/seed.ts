@@ -15,7 +15,7 @@ async function main() {
       email: 'manager@example.com',
       name: 'Inventory Manager',
       hashedPassword: managerPassword,
-      role: 'MANAGER',
+      role: 'INVENTORY_MANAGER',
     },
   });
 
@@ -27,7 +27,7 @@ async function main() {
       email: 'staff@example.com',
       name: 'Warehouse Staff',
       hashedPassword: staffPassword,
-      role: 'STAFF',
+      role: 'WAREHOUSE_STAFF',
     },
   });
 

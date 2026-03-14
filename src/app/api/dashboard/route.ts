@@ -7,5 +7,16 @@ const dashboardService = new DashboardService();
 export const GET = apiHandler(async () => {
   await requireAuth();
   const kpis = await dashboardService.getKpis();
-  return NextResponse.json(kpis);
+  const operations = await dashboardService.getRecentOperations();
+  const alerts = await dashboardService.getLowStockAlerts();
+  const trend = await dashboardService.getMovementsTrend();
+  const categories = await dashboardService.getStockByCategory();
+  
+  return NextResponse.json({
+    kpis,
+    operations,
+    alerts,
+    trend,
+    categories,
+  });
 });

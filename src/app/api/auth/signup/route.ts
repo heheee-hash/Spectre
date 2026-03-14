@@ -29,7 +29,7 @@ export async function POST(req: Request) {
         name,
         email,
         hashedPassword,
-        role: "STAFF", // default role
+        role: "WAREHOUSE_STAFF", // default role
       },
       select: {
         id: true,
