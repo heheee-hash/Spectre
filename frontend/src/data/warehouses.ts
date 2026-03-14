@@ -1,0 +1,56 @@
+import { Warehouse } from '@/types';
+
+export const mockWarehouses: Warehouse[] = [
+  {
+    id: 'wh-001',
+    name: 'Main Warehouse',
+    code: 'WH-MAIN',
+    address: '123 Industrial Ave, Building A',
+    capacity: 10000,
+    usedCapacity: 6500,
+    manager: 'Sarah Johnson',
+    isActive: true,
+    zones: [
+      { id: 'z-001', name: 'Zone A - Bulk Storage', type: 'storage', capacity: 4000, usedCapacity: 2800, x: 10, y: 10, width: 180, height: 120 },
+      { id: 'z-002', name: 'Zone B - Receiving Dock', type: 'receiving', capacity: 2000, usedCapacity: 1200, x: 200, y: 10, width: 120, height: 120 },
+      { id: 'z-003', name: 'Zone C - Shipping Bay', type: 'shipping', capacity: 2000, usedCapacity: 1500, x: 10, y: 140, width: 120, height: 100 },
+      { id: 'z-004', name: 'Zone D - Staging Area', type: 'staging', capacity: 2000, usedCapacity: 1000, x: 200, y: 140, width: 120, height: 100 },
+    ],
+    createdAt: '2024-06-01T08:00:00Z',
+    updatedAt: '2025-03-14T10:00:00Z',
+  },
+  {
+    id: 'wh-002',
+    name: 'Production Floor',
+    code: 'WH-PROD',
+    address: '123 Industrial Ave, Building B',
+    capacity: 5000,
+    usedCapacity: 3200,
+    manager: 'Michael Chen',
+    isActive: true,
+    zones: [
+      { id: 'z-005', name: 'Raw Material Bay', type: 'storage', capacity: 2000, usedCapacity: 1400, x: 10, y: 10, width: 150, height: 100 },
+      { id: 'z-006', name: 'Assembly Line Input', type: 'staging', capacity: 1500, usedCapacity: 1000, x: 170, y: 10, width: 150, height: 100 },
+      { id: 'z-007', name: 'Finished Goods Area', type: 'storage', capacity: 1500, usedCapacity: 800, x: 10, y: 120, width: 310, height: 80 },
+    ],
+    createdAt: '2024-06-15T08:00:00Z',
+    updatedAt: '2025-03-13T16:00:00Z',
+  },
+  {
+    id: 'wh-003',
+    name: 'Packing Zone',
+    code: 'WH-PACK',
+    address: '123 Industrial Ave, Building C',
+    capacity: 3000,
+    usedCapacity: 1800,
+    manager: 'Lisa Park',
+    isActive: true,
+    zones: [
+      { id: 'z-008', name: 'Packing Station 1', type: 'staging', capacity: 1000, usedCapacity: 600, x: 10, y: 10, width: 120, height: 80 },
+      { id: 'z-009', name: 'Packing Station 2', type: 'staging', capacity: 1000, usedCapacity: 700, x: 140, y: 10, width: 120, height: 80 },
+      { id: 'z-010', name: 'Outbound Dock', type: 'shipping', capacity: 1000, usedCapacity: 500, x: 10, y: 100, width: 250, height: 70 },
+    ],
+    createdAt: '2024-07-01T08:00:00Z',
+    updatedAt: '2025-03-12T12:00:00Z',
+  },
+];

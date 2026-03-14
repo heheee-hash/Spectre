@@ -1,0 +1,86 @@
+src/app/(dashboard)/adjustments/page.tsx(84,5): error TS2322: Type 'Resolver<{ warehouseId: string; date: string; productId: string; newQty: unknown; reason: string; notes?: string | undefined; }, any, { warehouseId: string; date: string; productId: string; newQty: number; reason: string; notes?: string | undefined; }>' is not assignable to type 'Resolver<{ warehouseId: string; date: string; productId: string; newQty: number; reason: string; notes?: string | undefined; }, any, { warehouseId: string; date: string; productId: string; newQty: number; reason: string; notes?: string | undefined; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ warehouseId: string; date: string; productId: string; newQty: number; reason: string; notes?: string | undefined; }>' is not assignable to type 'ResolverOptions<{ warehouseId: string; date: string; productId: string; newQty: unknown; reason: string; notes?: string | undefined; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/app/(dashboard)/adjustments/page.tsx(108,40): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+src/app/(dashboard)/adjustments/page.tsx(178,77): error TS2345: Argument of type 'TFieldValues' is not assignable to parameter of type '{ warehouseId: string; date: string; productId: string; newQty: number; reason: string; notes?: string | undefined; }'.
+  Type 'FieldValues' is missing the following properties from type '{ warehouseId: string; date: string; productId: string; newQty: number; reason: string; notes?: string | undefined; }': warehouseId, date, productId, newQty, reason
+src/app/(dashboard)/adjustments/page.tsx(182,110): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/adjustments/page.tsx(194,104): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/adjustments/page.tsx(206,100): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/deliveries/page.tsx(74,5): error TS2322: Type 'Resolver<{ customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: unknown; notes?: string | undefined; }, any, { customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: number; notes?: string | undefined; }>' is not assignable to type 'Resolver<{ customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: number; notes?: string | undefined; }, any, { customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: number; notes?: string | undefined; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: number; notes?: string | undefined; }>' is not assignable to type 'ResolverOptions<{ customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: unknown; notes?: string | undefined; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/app/(dashboard)/deliveries/page.tsx(98,40): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+src/app/(dashboard)/deliveries/page.tsx(161,77): error TS2345: Argument of type 'TFieldValues' is not assignable to parameter of type '{ customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: number; notes?: string | undefined; }'.
+  Type 'FieldValues' is missing the following properties from type '{ customer: string; warehouseId: string; scheduledDate: string; productId: string; demandQty: number; notes?: string | undefined; }': customer, warehouseId, scheduledDate, productId, demandQty
+src/app/(dashboard)/deliveries/page.tsx(169,110): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/deliveries/page.tsx(182,106): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/products/page.tsx(81,5): error TS2322: Type 'Resolver<{ name: string; sku: string; category: string; description: string; unit: string; costPrice: unknown; salePrice: unknown; reorderLevel: unknown; }, any, { name: string; sku: string; category: string; description: string; unit: string; costPrice: number; salePrice: number; reorderLevel: number; }>' is not assignable to type 'Resolver<{ name: string; sku: string; category: string; description: string; unit: string; costPrice: number; salePrice: number; reorderLevel: number; }, any, { name: string; sku: string; category: string; ... 4 more ...; reorderLevel: number; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ name: string; sku: string; category: string; description: string; unit: string; costPrice: number; salePrice: number; reorderLevel: number; }>' is not assignable to type 'ResolverOptions<{ name: string; sku: string; category: string; description: string; unit: string; costPrice: unknown; salePrice: unknown; reorderLevel: unknown; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/app/(dashboard)/products/page.tsx(112,42): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+src/app/(dashboard)/products/page.tsx(190,77): error TS2345: Argument of type 'TFieldValues' is not assignable to parameter of type 'ProductFormData'.
+  Type 'FieldValues' is missing the following properties from type 'ProductFormData': name, sku, category, description, and 4 more.
+src/app/(dashboard)/products/page.tsx(205,104): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/products/page.tsx(214,96): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/receipts/page.tsx(75,5): error TS2322: Type 'Resolver<{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: unknown; notes?: string | undefined; }, any, { supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }>' is not assignable to type 'Resolver<{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }, any, { supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }>' is not assignable to type 'ResolverOptions<{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: unknown; notes?: string | undefined; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/app/(dashboard)/receipts/page.tsx(99,40): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+src/app/(dashboard)/receipts/page.tsx(162,77): error TS2345: Argument of type 'TFieldValues' is not assignable to parameter of type '{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }'.
+  Type 'FieldValues' is missing the following properties from type '{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }': supplier, warehouseId, scheduledDate, productId, expectedQty
+src/app/(dashboard)/receipts/page.tsx(170,110): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/receipts/page.tsx(183,106): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/stock-ledger/page.tsx(49,38): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+src/app/(dashboard)/transfers/page.tsx(74,5): error TS2322: Type 'Resolver<{ sourceWarehouseId: string; destinationWarehouseId: string; scheduledDate: string; productId: string; quantity: unknown; notes?: string | undefined; }, any, { sourceWarehouseId: string; destinationWarehouseId: string; scheduledDate: string; productId: string; quantity: number; notes?: string | undefined; }>' is not assignable to type 'Resolver<{ sourceWarehouseId: string; destinationWarehouseId: string; scheduledDate: string; productId: string; quantity: number; notes?: string | undefined; }, any, { sourceWarehouseId: string; ... 4 more ...; notes?: string | undefined; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ sourceWarehouseId: string; destinationWarehouseId: string; scheduledDate: string; productId: string; quantity: number; notes?: string | undefined; }>' is not assignable to type 'ResolverOptions<{ sourceWarehouseId: string; destinationWarehouseId: string; scheduledDate: string; productId: string; quantity: unknown; notes?: string | undefined; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/app/(dashboard)/transfers/page.tsx(98,40): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+src/app/(dashboard)/transfers/page.tsx(166,77): error TS2345: Argument of type 'TFieldValues' is not assignable to parameter of type '{ sourceWarehouseId: string; destinationWarehouseId: string; scheduledDate: string; productId: string; quantity: number; notes?: string | undefined; }'.
+  Type 'FieldValues' is missing the following properties from type '{ sourceWarehouseId: string; destinationWarehouseId: string; scheduledDate: string; productId: string; quantity: number; notes?: string | undefined; }': sourceWarehouseId, destinationWarehouseId, scheduledDate, productId, quantity
+src/app/(dashboard)/transfers/page.tsx(170,122): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/transfers/page.tsx(177,132): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/transfers/page.tsx(190,106): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/components/layout/header.tsx(65,32): error TS2322: Type '{ children: Element; asChild: true; }' is not assignable to type 'IntrinsicAttributes & Props<unknown>'.
+  Property 'asChild' does not exist on type 'IntrinsicAttributes & Props<unknown>'.
+src/components/layout/header.tsx(74,61): error TS2322: Type '{ children: Element[]; className: string; align: "end"; forceMount: true; }' is not assignable to type 'IntrinsicAttributes & MenuPopupProps & Pick<MenuPositionerProps, "align" | "alignOffset" | "side" | "sideOffset">'.
+  Property 'forceMount' does not exist on type 'IntrinsicAttributes & MenuPopupProps & Pick<MenuPositionerProps, "align" | "alignOffset" | "side" | "sideOffset">'.
+src/components/layout/sidebar.tsx(115,42): error TS2322: Type '{ children: Element[]; key: "/" | "/products" | "/receipts" | "/deliveries" | "/transfers" | "/adjustments" | "/stock-ledger" | "/warehouses" | "/analytics"; delayDuration: number; }' is not assignable to type 'IntrinsicAttributes & Props<unknown>'.
+  Property 'delayDuration' does not exist on type 'IntrinsicAttributes & Props<unknown>'.
+src/components/layout/sidebar.tsx(116,35): error TS2322: Type '{ children: Element; asChild: true; }' is not assignable to type 'IntrinsicAttributes & Props<unknown>'.
+  Property 'asChild' does not exist on type 'IntrinsicAttributes & Props<unknown>'.

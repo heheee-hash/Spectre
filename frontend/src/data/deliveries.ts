@@ -1,0 +1,67 @@
+import { DeliveryOrder } from '@/types';
+
+export const mockDeliveries: DeliveryOrder[] = [
+  {
+    id: 'del-001',
+    reference: 'DEL/2025/001',
+    customer: 'BuildRight Construction',
+    warehouseId: 'wh-001',
+    warehouseName: 'Main Warehouse',
+    scheduledDate: '2025-03-11T09:00:00Z',
+    completedDate: '2025-03-11T16:00:00Z',
+    status: 'done',
+    lines: [
+      { id: 'dl-001', productId: 'prod-001', productName: 'Steel Rods', demandQty: 200, deliveredQty: 200, unit: 'pcs' },
+      { id: 'dl-002', productId: 'prod-002', productName: 'Industrial Bolts', demandQty: 300, deliveredQty: 300, unit: 'boxes' },
+    ],
+    notes: 'Priority delivery for site project',
+    createdAt: '2025-03-09T10:00:00Z',
+    updatedAt: '2025-03-11T16:00:00Z',
+  },
+  {
+    id: 'del-002',
+    reference: 'DEL/2025/002',
+    customer: 'MetalFab Inc',
+    warehouseId: 'wh-003',
+    warehouseName: 'Packing Zone',
+    scheduledDate: '2025-03-13T10:00:00Z',
+    status: 'confirmed',
+    lines: [
+      { id: 'dl-003', productId: 'prod-003', productName: 'Aluminum Sheets', demandQty: 45, deliveredQty: 0, unit: 'sheets' },
+      { id: 'dl-004', productId: 'prod-006', productName: 'Copper Wire', demandQty: 25, deliveredQty: 0, unit: 'pcs' },
+    ],
+    notes: 'Confirmed order - expedite shipping',
+    createdAt: '2025-03-11T08:00:00Z',
+    updatedAt: '2025-03-12T14:00:00Z',
+  },
+  {
+    id: 'del-003',
+    reference: 'DEL/2025/003',
+    customer: 'GreenOffice Co',
+    warehouseId: 'wh-001',
+    warehouseName: 'Main Warehouse',
+    scheduledDate: '2025-03-16T09:00:00Z',
+    status: 'draft',
+    lines: [
+      { id: 'dl-005', productId: 'prod-004', productName: 'Office Chairs', demandQty: 12, deliveredQty: 0, unit: 'pcs' },
+    ],
+    notes: 'New office setup delivery',
+    createdAt: '2025-03-13T11:00:00Z',
+    updatedAt: '2025-03-13T11:00:00Z',
+  },
+  {
+    id: 'del-004',
+    reference: 'DEL/2025/004',
+    customer: 'WoodCraft Studio',
+    warehouseId: 'wh-003',
+    warehouseName: 'Packing Zone',
+    scheduledDate: '2025-03-14T14:00:00Z',
+    completedDate: '2025-03-14T17:00:00Z',
+    status: 'done',
+    lines: [
+      { id: 'dl-006', productId: 'prod-005', productName: 'Wood Panels', demandQty: 80, deliveredQty: 80, unit: 'sheets' },
+    ],
+    createdAt: '2025-03-12T09:00:00Z',
+    updatedAt: '2025-03-14T17:00:00Z',
+  },
+];

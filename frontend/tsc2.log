@@ -1,0 +1,38 @@
+src/app/(dashboard)/adjustments/page.tsx(182,116): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/adjustments/page.tsx(194,110): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/adjustments/page.tsx(206,106): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/deliveries/page.tsx(169,116): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/deliveries/page.tsx(182,112): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/products/page.tsx(112,42): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+src/app/(dashboard)/products/page.tsx(190,45): error TS2345: Argument of type '(data: FormData) => void' is not assignable to parameter of type 'SubmitHandler<{ name: string; sku: string; category: string; description: string; unit: string; costPrice: number; salePrice: number; reorderLevel: number; }>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type '{ name: string; sku: string; category: string; description: string; unit: string; costPrice: number; salePrice: number; reorderLevel: number; }' is missing the following properties from type 'FormData': append, delete, get, getAll, and 7 more.
+src/app/(dashboard)/products/page.tsx(190,87): error TS2345: Argument of type 'FormData' is not assignable to parameter of type 'ProductFormData'.
+  Type 'FormData' is missing the following properties from type 'ProductFormData': name, sku, category, description, and 4 more.
+src/app/(dashboard)/products/page.tsx(205,110): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/products/page.tsx(214,102): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/receipts/page.tsx(162,45): error TS2345: Argument of type '(data: FormData) => void' is not assignable to parameter of type 'SubmitHandler<{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type '{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }' is missing the following properties from type 'FormData': append, delete, get, getAll, and 7 more.
+src/app/(dashboard)/receipts/page.tsx(162,87): error TS2345: Argument of type 'FormData' is not assignable to parameter of type '{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }'.
+  Type 'FormData' is missing the following properties from type '{ supplier: string; warehouseId: string; scheduledDate: string; productId: string; expectedQty: number; notes?: string | undefined; }': supplier, warehouseId, scheduledDate, productId, expectedQty
+src/app/(dashboard)/receipts/page.tsx(170,116): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/receipts/page.tsx(183,112): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/transfers/page.tsx(170,128): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/transfers/page.tsx(177,138): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/app/(dashboard)/transfers/page.tsx(190,112): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.

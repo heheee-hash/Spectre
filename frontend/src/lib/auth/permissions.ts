@@ -1,0 +1,42 @@
+import { UserRole } from "./roles";
+
+export type Permission =
+  | "PRODUCT_CREATE"
+  | "PRODUCT_EDIT"
+  | "PRODUCT_VIEW"
+  | "RECEIPT_CREATE"
+  | "RECEIPT_VALIDATE"
+  | "DELIVERY_CREATE"
+  | "DELIVERY_VALIDATE"
+  | "TRANSFER_CREATE"
+  | "TRANSFER_VALIDATE"
+  | "ADJUSTMENT_CREATE"
+  | "WAREHOUSE_MANAGE"
+  | "DASHBOARD_VIEW"
+  | "MOVE_HISTORY_VIEW";
+
+export const rolePermissions: Record<UserRole, Permission[]> = {
+  [UserRole.INVENTORY_MANAGER]: [
+    "PRODUCT_CREATE",
+    "PRODUCT_EDIT",
+    "PRODUCT_VIEW",
+    "RECEIPT_CREATE",
+    "RECEIPT_VALIDATE",
+    "DELIVERY_CREATE",
+    "DELIVERY_VALIDATE",
+    "TRANSFER_CREATE",
+    "TRANSFER_VALIDATE",
+    "ADJUSTMENT_CREATE",
+    "WAREHOUSE_MANAGE",
+    "DASHBOARD_VIEW",
+    "MOVE_HISTORY_VIEW"
+  ],
+
+  [UserRole.WAREHOUSE_STAFF]: [
+    "RECEIPT_CREATE",
+    "DELIVERY_CREATE",
+    "TRANSFER_CREATE",
+    "DASHBOARD_VIEW",
+    "MOVE_HISTORY_VIEW"
+  ]
+};
