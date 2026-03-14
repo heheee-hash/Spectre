@@ -1,0 +1,287 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  email          String    @unique
+  hashedPassword String
+  role           Role      @default(STAFF)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  receiptsCreated    Receipt[]    @relation("ReceiptCreator")
+  deliveriesCreated  Delivery[]   @relation("DeliveryCreator")
+  transfersCreated   Transfer[]   @relation("TransferCreator")
+  adjustmentsCreated Adjustment[] @relation("AdjustmentCreator")
+  movesCreated       StockLedger[] @relation("MoveCreator")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  STAFF
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  sku         String   @unique
+  name        String
+  description String?
+  price       Float    @default(0)
+  cost        Float    @default(0)
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+  uom         String   @default("units")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  stocks          ProductStock[]
+  receiptItems    ReceiptItem[]
+  deliveryItems   DeliveryItem[]
+  transferItems   TransferItem[]
+  adjustmentItems AdjustmentItem[]
+  ledgerEntries   StockLedger[]
+  reorderRules    ReorderRule[]
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  products Product[]
+}
+
+model Warehouse {
+  id          String    @id @default(cuid())
+  name        String
+  code        String    @unique
+  address     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  locations Location[]
+}
+
+model Location {
+  id          String    @id @default(cuid())
+  name        String
+  type        LocationType @default(INTERNAL)
+  warehouseId String
+  warehouse   Warehouse @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  stocks ProductStock[]
+  receipts Receipt[] @relation("DestinationLocation")
+  deliveries Delivery[] @relation("SourceLocation")
+  transfersSource Transfer[] @relation("SourceLocation")
+  transfersDestination Transfer[] @relation("DestinationLocation")
+  adjustments Adjustment[]
+  ledgerSource StockLedger[] @relation("SourceLocation")
+  ledgerDestination StockLedger[] @relation("DestinationLocation")
+}
+
+enum LocationType {
+  VENDOR
+  CUSTOMER
+  INTERNAL
+  TRANSIT
+  VIRTUAL
+}
+
+model ProductStock {
+  id         String   @id @default(cuid())
+  productId  String
+  locationId String
+  quantity   Float    @default(0)
+  updatedAt  DateTime @updatedAt
+
+  product  Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  location Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, locationId])
+}
+
+// Inbound Movement
+model Receipt {
+  id            String    @id @default(cuid())
+  reference     String    @unique
+  status        DocumentStatus @default(DRAFT)
+  vendorId      String?   // Virtual location ID for vendor, or just string
+  destinationId String
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  validatedAt   DateTime?
+  createdById   String
+  
+  destination   Location  @relation("DestinationLocation", fields: [destinationId], references: [id])
+  createdBy     User      @relation("ReceiptCreator", fields: [createdById], references: [id])
+  items         ReceiptItem[]
+}
+
+model ReceiptItem {
+  id        String  @id @default(cuid())
+  receiptId String
+  productId String
+  quantity  Float
+
+  receipt Receipt @relation(fields: [receiptId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+}
+
+// Outbound Movement
+model Delivery {
+  id            String    @id @default(cuid())
+  reference     String    @unique
+  status        DocumentStatus @default(DRAFT)
+  sourceId      String
+  customerId    String?   // Virtual location ID for customer
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  validatedAt   DateTime?
+  createdById   String
+
+  source        Location  @relation("SourceLocation", fields: [sourceId], references: [id])
+  createdBy     User      @relation("DeliveryCreator", fields: [createdById], references: [id])
+  items         DeliveryItem[]
+}
+
+model DeliveryItem {
+  id         String  @id @default(cuid())
+  deliveryId String
+  productId  String
+  quantity   Float
+
+  delivery Delivery @relation(fields: [deliveryId], references: [id], onDelete: Cascade)
+  product  Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+}
+
+// Internal Movement
+model Transfer {
+  id            String    @id @default(cuid())
+  reference     String    @unique
+  status        DocumentStatus @default(DRAFT)
+  sourceId      String
+  destinationId String
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  validatedAt   DateTime?
+  createdById   String
+
+  source        Location  @relation("SourceLocation", fields: [sourceId], references: [id])
+  destination   Location  @relation("DestinationLocation", fields: [destinationId], references: [id])
+  createdBy     User      @relation("TransferCreator", fields: [createdById], references: [id])
+  items         TransferItem[]
+}
+
+model TransferItem {
+  id         String  @id @default(cuid())
+  transferId String
+  productId  String
+  quantity   Float
+
+  transfer Transfer @relation(fields: [transferId], references: [id], onDelete: Cascade)
+  product  Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+}
+
+model Adjustment {
+  id            String    @id @default(cuid())
+  reference     String    @unique
+  status        DocumentStatus @default(DRAFT)
+  locationId    String
+  reason        String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  validatedAt   DateTime?
+  createdById   String
+
+  location      Location  @relation(fields: [locationId], references: [id])
+  createdBy     User      @relation("AdjustmentCreator", fields: [createdById], references: [id])
+  items         AdjustmentItem[]
+}
+
+model AdjustmentItem {
+  id             String  @id @default(cuid())
+  adjustmentId   String
+  productId      String
+  countedQty     Float
+  systemQty      Float   // Snapshot of what system thought
+  variance       Float   // countedQty - systemQty
+
+  adjustment Adjustment @relation(fields: [adjustmentId], references: [id], onDelete: Cascade)
+  product    Product    @relation(fields: [productId], references: [id], onDelete: Restrict)
+}
+
+enum DocumentStatus {
+  DRAFT
+  WAITING
+  READY
+  DONE
+  CANCELED
+}
+
+// Single Source of Truth for stock movements
+model StockLedger {
+  id            String    @id @default(cuid())
+  productId     String
+  sourceId      String?
+  destinationId String?
+  quantity      Float
+  documentType  LedgerDocType
+  documentId    String    // Reference to Receipt, Delivery, Transfer, Adjustment ID
+  reference     String    // The human-readable reference
+  createdAt     DateTime  @default(now())
+  createdById   String
+
+  product       Product   @relation(fields: [productId], references: [id])
+  source        Location? @relation("SourceLocation", fields: [sourceId], references: [id])
+  destination   Location? @relation("DestinationLocation", fields: [destinationId], references: [id])
+  createdBy     User      @relation("MoveCreator", fields: [createdById], references: [id])
+}
+
+enum LedgerDocType {
+  RECEIPT
+  DELIVERY
+  TRANSFER
+  ADJUSTMENT
+}
+
+model ReorderRule {
+  id          String   @id @default(cuid())
+  productId   String
+  locationId  String
+  minQuantity Float
+  maxQuantity Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, locationId])
+}
+
+model PasswordResetOtp {
+  id        String   @id @default(cuid())
+  email     String
+  otp       String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email])
+}

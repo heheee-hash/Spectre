@@ -1,0 +1,2 @@
+src/components/ui/form.tsx(4,33): error TS2307: Cannot find module '@radix-ui/react-label' or its corresponding type declarations.
+src/components/ui/form.tsx(5,22): error TS2307: Cannot find module '@radix-ui/react-slot' or its corresponding type declarations.
